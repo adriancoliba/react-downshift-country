@@ -1,25 +1,18 @@
 import React, { Component } from 'react'
 import style from './App.css'
-import countriesData from '../Api/countries.json';
-// https://codesandbox.io/s/laughing-hill-hzuj5
+import countries from '../api/countries.json';
+import CountriesFiltered from './CountriesFiltered'
 
 class App extends Component {
     state = {
-        countries: [],
         inputValue: "",
         filteredCountries: [],
         showCountries: false,
         selectedCountry: null
     }
 
-    
-    componentDidMount(){
-        this.setState({countries: countriesData})
-    }
-
     handleChange = event => {
-        const { countries, selectedCountry } = this.state;
-        selectedCountry && this.setState({selectedCountry: null})
+        this.state.selectedCountry && this.setState({selectedCountry: null})
         const inputValue = event.currentTarget.value;
         const filteredCountries = countries.filter(country => country.toLowerCase().startsWith(inputValue.toLowerCase())
         );
@@ -43,26 +36,6 @@ class App extends Component {
     };
 
     render() {
-        let CountriesList;
-
-        if (this.state.inputValue && this.state.showCountries) {
-            if (this.state.filteredCountries.length > 0) {
-                CountriesList = (
-                    <ul className={style.countriesList}>
-                        {this.state.filteredCountries.map( country => {
-                            return <li key={country} onClick={this.handleSelectCountry}> {country} </li>
-                        })}
-                    </ul>
-                );
-            } else {
-                CountriesList = (
-                    <div className={style.notFound}>
-                        <p>Country not found</p>
-                    </div>
-                );
-            }
-        }
-
         return (
             <div className={style.container}>
                 <input 
@@ -72,7 +45,14 @@ class App extends Component {
                     onChange={this.handleChange}
                     className={this.state.selectedCountry ? style.inputSelected : style.input}
                 />
-                {CountriesList}
+                {this.state.inputValue && this.state.showCountries && (
+                    <CountriesFiltered
+                        inputValue={this.state.inputValue}
+                        showCountries={this.state.showCountries}
+                        filteredCountries={this.state.filteredCountries}
+                        handleSelectCountry={this.handleSelectCountry}
+                    />
+                )}
             </div>
         )
     }
