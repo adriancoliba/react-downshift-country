@@ -1,0 +1,53 @@
+.container {
+    text-align: center;
+    margin-top: 200px;
+}
+
+.input {
+    padding: 7px;
+    width: 280px;
+    font-size: 16px;
+    padding-left: 6px;
+    border: 2px solid rgb(198, 198, 198);
+}
+
+.input:focus {
+    border: 2px solid rgb(164, 164, 164);
+}
+
+.inputSelected {
+    padding: 7px;
+    width: 280px;
+    font-size: 16px;
+    padding-left: 6px;
+    border: 2px solid #47C747
+}
+
+.countriesList {
+    border: 1px solid rgb(198, 198, 198);;
+    border-top-width: 0;
+    list-style: none;
+    max-height: 168px;
+    overflow-y: auto;
+    padding-left: 0px;
+    width: 295px;
+    margin: 0 auto;
+    text-align: left;
+}
+  
+.countriesList li {
+    padding: 7px;
+    border-bottom: 1px solid rgb(198, 198, 198);
+}
+
+.countriesList li:hover {
+    cursor: pointer;
+    background-color: #EDEEEF;
+}
+
+.notFound {
+    color: #999;
+    padding: 0.5rem;
+    font-family: sans-serif;
+    font: menu
+}
