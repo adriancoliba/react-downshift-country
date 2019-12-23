@@ -4,7 +4,7 @@ import style from './CountriesFiltered.css'
 const CountriesFiltered = props => {
     let filteredCountries;
 
-    if (props.filteredCountries.length > 0) {
+    if (props.filteredCountries && props.filteredCountries.length > 0) {
         filteredCountries = (
             <ul className={style.countriesList}>
                 {props.filteredCountries.map( country => {
@@ -19,6 +19,7 @@ const CountriesFiltered = props => {
             </div>
         );
     }
+    console.log(props.filteredCountries)
 
     return (
         <React.Fragment>
