@@ -7,8 +7,13 @@ const CountriesFiltered = props => {
     if (props.filteredCountries && props.filteredCountries.length > 0) {
         filteredCountries = (
             <ul className={style.countriesList}>
-                {props.filteredCountries.map( country => {
-                    return <li key={country} onClick={props.handleSelectCountry}> {country} </li>
+                {props.filteredCountries.map( (country, index) => {
+                    let className;
+                    // Flag the active suggestion with a class
+                    if (index === props.activeSuggestion) {
+                        className = "suggestionActive";
+                    }
+                    return <li key={country} className={style[className]} onClick={props.handleSelectCountry}> {country} </li>
                 })}
             </ul>
         );
@@ -19,7 +24,6 @@ const CountriesFiltered = props => {
             </div>
         );
     }
-    console.log(props.filteredCountries)
 
     return (
         <React.Fragment>
